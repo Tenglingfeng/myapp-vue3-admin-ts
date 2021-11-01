@@ -27,7 +27,7 @@
           <a-input
             type="password"
             autocomplete="off"
-            v-model:value="account_form.passwords"
+            v-model:value="account_form.password2"
           />
         </a-form-item>
 
@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts">
-import { checkPhone } from "@/utils/validation";
+//import { checkPhone } from "@/utils/validation";
 import { RuleObject } from "ant-design-vue/lib/form/interface";
 import { defineComponent, reactive, toRefs } from "vue";
 //局部组件
@@ -63,10 +63,10 @@ export default defineComponent({
   components: {},
   setup(props) {
     let validateUserName = async (_rule: RuleObject, value: string) => {
-      if (!checkPhone(value)) {
-        console.log(value);
-        return Promise.reject("请输入正确的手机号");
-      }
+      // if (!checkPhone(value)) {
+      //   console.log(value);
+      //   return Promise.reject("请输入正确的手机号");
+      // }
       return Promise.resolve();
     };
 
@@ -82,7 +82,7 @@ export default defineComponent({
       account_form: {
         username: "",
         password: "",
-        passwords: "",
+        password2: "",
         code: "",
       },
       rules_form: {
