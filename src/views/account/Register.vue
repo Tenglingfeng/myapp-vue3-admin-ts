@@ -67,6 +67,27 @@ import { checkPhone } from "@/utils/validation";
 import { message } from "ant-design-vue";
 import { RuleObject } from "ant-design-vue/lib/form/interface";
 import { defineComponent, reactive, toRefs } from "vue";
+
+interface CodeBtn {
+  button_text: string;
+  btn_loading: boolean;
+  btn_disabled: boolean;
+  sec: number;
+  timer: number;
+}
+
+interface Test {
+  readonly name: string;
+  age: number;
+  id: number;
+  [other: string]: unknown;
+}
+
+interface TestArr {
+  0: string;
+  1: number;
+  2: boolean;
+}
 //局部组件
 export default defineComponent({
   name: "register",
@@ -120,7 +141,29 @@ export default defineComponent({
       },
     });
 
-    const dataItem = reactive({
+    const hanlerTest = (params: Test) => {
+      console.log(
+        params.name + "|" + params.age + "|" + params.id + params.other1
+      );
+    };
+
+    const test = hanlerTest({
+      name: "d",
+      age: 12,
+      id: 111,
+      other1: "999",
+    });
+
+    const hanlerTestArr = (params: TestArr) => {
+      console.log(params[0] + "|" + params[1] + "|" + params[2]);
+    };
+    const testArrr = hanlerTestArr({
+      0: "1",
+      1: 2,
+      2: false,
+    });
+
+    const dataItem = reactive<CodeBtn>({
       button_text: "获取验证码",
       btn_loading: false,
       btn_disabled: false,
@@ -161,6 +204,8 @@ export default defineComponent({
       ...data,
       handleFinish,
       getCode,
+      test,
+      testArrr,
     };
   },
 });

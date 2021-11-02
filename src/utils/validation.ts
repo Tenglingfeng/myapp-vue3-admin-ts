@@ -1,7 +1,7 @@
 /**
- * 
- * @param {手机号} value 
- * @returns 
+ *
+ * @param {手机号} value
+ * @returns
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function checkPhone(value: string): boolean {
@@ -11,4 +11,4 @@ export function checkPhone(value: string): boolean {
 
 export function checkPassword(): boolean {
   return true;
-} 
+}
